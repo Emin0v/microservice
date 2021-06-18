@@ -1,0 +1,11 @@
+spring:
+  application:
+    name: account-service
+
+  main:
+    allow-bean-definition-overriding: true
+
+  cloud:
+    config:
+      profile: native
+      uri: ${CONFIG_SERVER_URL:http://localhost:8888}

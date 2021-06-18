@@ -1,0 +1,28 @@
+server:
+  port: 8501
+
+spring:
+  data:
+    cassandra:
+      keyspace-name: springcloud
+      port: 9042
+      contact-points: 192.168.99.100
+      username: cassandra
+      password: cassandra
+      schema-action: CREATE_IF_NOT_EXISTS
+
+
+
+
+#spring:
+#  data:
+#    cassandra:
+#      contact:
+#        point: ${CASSANDRA_SERVER_HOST:192.168.99.100}
+#      port: ${CASSANDRA_SERVER_PORT:9042}
+#      keyspace:
+#        name: ${CASSANDRA_SERVER_KEYSPACE:springcloud}
+#
+#      username: ${CASSANDRA_SERVER_USERNAME:cassandra}
+#      password: ${CASSANDRA_SERVER_PASSWORD:cassandra}
+#
