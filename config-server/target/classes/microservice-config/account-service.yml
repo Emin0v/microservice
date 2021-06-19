@@ -1,7 +1,16 @@
 server:
   port: 8501
 
+  boot:
+    admin:
+      client:
+        url: ${SPRING_BOOT_ADMIN_SERVER_URL:http://localhost:8508}
+
 spring:
+  application:
+    name: account-service
+  zipkin:
+    base-url: ${ZIPKIN_SERVER_URL:http://localhost:9411}
   data:
     cassandra:
       keyspace-name: springcloud
@@ -11,8 +20,18 @@ spring:
       password: cassandra
       schema-action: CREATE_IF_NOT_EXISTS
 
+eureka:
+  client:
+    instance:
+      hostname: ${EUREKA_SERVER_HOSTNAME:localhost}
+    serviceUrl:
+      defaultZone: ${EUREKA_SERVER_URL:http://localhost:8500/eureka/}
 
-
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
 
 #spring:
 #  data:
