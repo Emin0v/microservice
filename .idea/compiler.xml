@@ -9,11 +9,13 @@
         <outputRelativeToContentRoot value="true" />
         <module name="account-service" />
         <module name="config-server" />
+        <module name="eureka-server" />
       </profile>
     </annotationProcessing>
     <bytecodeTargetLevel>
       <module name="account-service" target="1.8" />
       <module name="config-server" target="11" />
+      <module name="eureka-server" target="11" />
       <module name="microservice" target="11" />
       <module name="resume.multimodule" target="11" />
       <module name="service-parent" target="11" />
@@ -23,6 +25,7 @@
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
       <module name="account-service" options="-parameters" />
       <module name="config-server" options="-parameters" />
+      <module name="eureka-server" options="-parameters" />
       <module name="service-parent" options="-parameters" />
     </option>
   </component>
