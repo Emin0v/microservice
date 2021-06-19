@@ -1,8 +1,0 @@
-Manifest-Version: 1.0
-Created-By: IntelliJ IDEA
-Built-By: Eminov
-Build-Jdk: 16.0.1
-Implementation-Version: 10.0.1
-Implementation-Vendor-Id: com.company
-Main-Class: ${start-class}
-
