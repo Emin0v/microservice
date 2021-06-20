@@ -3,12 +3,8 @@ package com.company.entity;
 import java.io.Serializable;
 import java.util.Date;
 import java.util.UUID;
-import lombok.AllArgsConstructor;
-import lombok.EqualsAndHashCode;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
-import lombok.ToString;
+
+import lombok.*;
 import org.springframework.data.cassandra.core.mapping.Column;
 import org.springframework.data.cassandra.core.mapping.PrimaryKey;
 import org.springframework.data.cassandra.core.mapping.Table;
@@ -18,6 +14,7 @@ import org.springframework.data.cassandra.core.mapping.Table;
 @AllArgsConstructor
 @EqualsAndHashCode(of = {"id"})
 @ToString
+@Builder
 @Table(value = "accounts")
 public class Account implements Serializable {
 

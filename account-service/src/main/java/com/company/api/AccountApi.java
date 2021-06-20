@@ -1,8 +1,11 @@
 package com.company.api;
 
+import com.company.AccountDTO;
 import com.company.entity.Account;
 import com.company.service.AccountService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Slice;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
@@ -16,22 +19,22 @@ public class AccountApi {
     private final AccountService accountService;
 
     @GetMapping
-    public ResponseEntity<List<Account>> getAll(){
-        return ResponseEntity.ok(accountService.getAll());
+    public ResponseEntity<Slice<Account>> getAll(Pageable pageable){
+        return ResponseEntity.ok(accountService.getAll(pageable));
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Account> get(@PathVariable("id") String id){
+    public ResponseEntity<AccountDTO> get(@PathVariable("id") String id){
         return ResponseEntity.ok(accountService.get(id));
     }
 
     @PostMapping
-    public ResponseEntity<Account> save(@RequestBody Account account){
+    public ResponseEntity<AccountDTO> save(@RequestBody AccountDTO account){
         return ResponseEntity.ok(accountService.save(account));
     }
 
     @PutMapping("/{id}")
-    public ResponseEntity<Account> update(@PathVariable("id") String id, @RequestBody Account account){
+    public ResponseEntity<AccountDTO> update(@PathVariable("id") String id, @RequestBody AccountDTO account){
        return ResponseEntity.ok(accountService.update(id,account));
     }
 
