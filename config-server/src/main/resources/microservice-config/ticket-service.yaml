@@ -1,0 +1,44 @@
+server:
+  port: 8502
+
+spring:
+  application:
+    name: ticket-service
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://192.168.99.100:3333/
+    username: root
+    password: root
+  jpa:
+    database: mysql
+    database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
+    hibernate:
+      ddl-auto: update
+#  rabbitmq:
+#    username: ${MYSQL_USERNAME:rabbitmq}
+#    password: ${MYSQL_PASSWORD:rabbitmq}
+#  cloud:
+#    stream:
+#      bindings:
+#        output:
+#          destination: msqueue
+#  zipkin:
+#    base-url: ${ZIPKIN_SERVER_URL:http://localhost:9411/}
+#
+#  boot:
+#    admin:
+#      client:
+#        url: ${SPRING_BOOT_ADMIN_SERVER_URL:http://localhost:8508}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+
+eureka:
+  client:
+    instance:
+      hostname: ${EUREKA_SERVER_HOST:localhost}
+    serviceUrl:
+      defaultZone: ${EUREKA_SERVER_URL:http://localhost:8500/eureka/}
