@@ -1,5 +1,5 @@
-/account-service/target
-/config-server/target
-/eureka-server/target
-/service-parent/target
-/ticket-service/target
+/account-service/target/**
+/config-server/target/**
+/eureka-server/target/**
+/service-parent/target/**
+/ticket-service/target/**
