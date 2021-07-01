@@ -9,13 +9,13 @@ services:
 
 
   mysql:
-    image: mysql:5.7
+    image: mysql:5.5
 #    restart: always
     environment:
       ES_JAVA_OPTS: "-Xms512m -Xmx512m"
       MYSQL_ROOT_PASSWORD: root
     ports:
-      - '3333:3306'
+      - '3335:3306'
 
   elasticsearch:
     image: elasticsearch:6.8.5

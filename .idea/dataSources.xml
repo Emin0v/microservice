@@ -7,5 +7,11 @@
       <jdbc-driver>com.dbschema.CassandraJdbcDriver</jdbc-driver>
       <jdbc-url>jdbc:cassandra://192.168.99.100:9042</jdbc-url>
     </data-source>
+    <data-source source="LOCAL" name="@192.168.99.100 [2]" uuid="7d9ac866-7e1d-4b35-a395-da3c18aec27f">
+      <driver-ref>mysql.8</driver-ref>
+      <synchronize>true</synchronize>
+      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://192.168.99.100:3335</jdbc-url>
+    </data-source>
   </component>
 </project>
