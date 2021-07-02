@@ -1,6 +1,6 @@
 package com.company.api;
 
-import com.company.AccountDTO;
+import com.company.contract.AccountDTO;
 import com.company.entity.Account;
 import com.company.service.AccountService;
 import lombok.RequiredArgsConstructor;
@@ -8,8 +8,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Slice;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
-
-import java.util.List;
 
 @RestController
 @RequiredArgsConstructor

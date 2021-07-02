@@ -47,6 +47,12 @@
             <version>1.4.7.RELEASE</version>
         </dependency>
 
+        <dependency>
+            <groupId>com.company</groupId>
+            <artifactId>service-common</artifactId>
+            <version>${project.version}</version>
+        </dependency>
+
     </dependencies>
 
 

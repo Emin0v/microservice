@@ -1,6 +1,6 @@
 package com.company.service;
 
-import com.company.AccountDTO;
+import com.company.contract.AccountDTO;
 import com.company.entity.Account;
 import com.company.repo.AccountRepository;
 import lombok.RequiredArgsConstructor;
@@ -11,8 +11,6 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
-import java.util.Collection;
-import java.util.List;
 import java.util.Optional;
 
 @Service

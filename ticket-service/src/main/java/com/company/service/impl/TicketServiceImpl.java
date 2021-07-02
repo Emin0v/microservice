@@ -1,5 +1,7 @@
 package com.company.service.impl;
 
+import com.company.client.AccountServiceClient;
+import com.company.contract.AccountDTO;
 import com.company.dto.TicketDTO;
 import com.company.model.PriorityType;
 import com.company.model.Ticket;
@@ -12,6 +14,7 @@ import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
+import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
@@ -22,12 +25,16 @@ public class TicketServiceImpl implements TicketService {
     private final TicketElasticRepository ticketElasticRepository;
     private final TicketRepository ticketRepository;
     private final ModelMapper modelMapper;
+    private final AccountServiceClient accountServiceClient;
 
     @Override
     @Transactional
     public TicketDTO save(TicketDTO ticketDto) {
         // Ticket -> Entity
         Ticket ticket = new Ticket();
+
+        ResponseEntity<AccountDTO> accountDTOResponseEntity = accountServiceClient.get(ticketDto.getAssignee());
+
 
         if(ticketDto.getDescription()==null)
             throw new IllegalArgumentException("Description bosh olmaz");
@@ -37,6 +44,7 @@ public class TicketServiceImpl implements TicketService {
         ticket.setTicketDate(ticketDto.getTicketDate());
         ticket.setTicketStatus(TicketStatus.valueOf(ticketDto.getTicketStatus()));
         ticket.setPriorityType(PriorityType.valueOf(ticketDto.getPriorityType()));
+        ticket.setAssignee(accountDTOResponseEntity.getBody().getId());
 
         // Mysql save
         ticket = ticketRepository.save(ticket);
@@ -46,7 +54,7 @@ public class TicketServiceImpl implements TicketService {
                 .description(ticket.getDescription())
                 .notes(ticket.getNotes())
                 .id(ticket.getId())
-//                .assignee(accountDtoResponseEntity.getBody().getNameSurname())
+                .assignee(accountDTOResponseEntity.getBody().getNameSurname())
                 .priorityType(ticket.getPriorityType().getLabel())
                 .ticketStatus(ticket.getTicketStatus().getLabel())
                 .ticketDate(ticket.getTicketDate()).build();
