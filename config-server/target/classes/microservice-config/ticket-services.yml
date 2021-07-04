@@ -14,7 +14,7 @@ spring:
     database-platform: org.hibernate.dialect.MySQL5InnoDBDialect
     hibernate:
       ddl-auto: update
-    generate-ddl: true
+#    generate-ddl: true
 
 #  rabbitmq:
 #    username: ${MYSQL_USERNAME:rabbitmq}

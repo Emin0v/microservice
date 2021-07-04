@@ -1,0 +1,3 @@
+com\company\contract\AccountDTO$AccountDTOBuilder.class
+com\company\contract\AccountDTO.class
+com\company\client\FeignConfig.class
