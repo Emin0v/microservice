@@ -2,7 +2,7 @@
 */target/**
 **/target/**
 /**/target/**
-/ticket-service/target/*
-/eureka-server/target/*
-/service-parent/target/*
-/account-service/target/*
+/ticket-service/target/**
+/eureka-server/target/**
+/service-parent/target/**
+/account-service/target/**
