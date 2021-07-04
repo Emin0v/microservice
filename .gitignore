@@ -6,3 +6,5 @@
 /eureka-server/target/
 /service-parent/target/
 /account-service/target/
+/config-server/target/
+/service-common/target/
