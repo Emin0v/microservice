@@ -11,6 +11,7 @@ import java.util.Date;
 @EqualsAndHashCode(of = {"id"})
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 public class Ticket extends BaseEntityModel {
 
     @Id

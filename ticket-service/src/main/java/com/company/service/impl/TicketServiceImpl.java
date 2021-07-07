@@ -1,7 +1,7 @@
 package com.company.service.impl;
 
 import com.company.client.AccountServiceClient;
-import com.company.contract.AccountDTO;
+import com.company.client.contract.AccountDTO;
 import com.company.dto.TicketDTO;
 import com.company.model.PriorityType;
 import com.company.model.Ticket;
@@ -9,6 +9,7 @@ import com.company.model.TicketStatus;
 import com.company.model.es.TicketModel;
 import com.company.repository.TicketRepository;
 import com.company.repository.es.TicketElasticRepository;
+import com.company.service.TicketNotificationService;
 import com.company.service.TicketService;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
@@ -18,6 +19,8 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 
+import java.util.Optional;
+
 @Service
 @RequiredArgsConstructor
 public class TicketServiceImpl implements TicketService {
@@ -26,6 +29,8 @@ public class TicketServiceImpl implements TicketService {
     private final TicketRepository ticketRepository;
     private final ModelMapper modelMapper;
     private final AccountServiceClient accountServiceClient;
+    private final TicketNotificationService ticketNotificationService;
+
 
     @Override
     @Transactional
@@ -62,6 +67,8 @@ public class TicketServiceImpl implements TicketService {
         //Elastic save
         ticketElasticRepository.save(model);
 
+        ticketNotificationService.sendToQueue(ticket);
+
         // return object
         ticketDto.setId(ticket.getId());
 
@@ -70,14 +77,23 @@ public class TicketServiceImpl implements TicketService {
 
     @Override
     public TicketDTO update(String id, TicketDTO ticketDto) {
+        Ticket ticketDb = ticketRepository.findById(id).get();
+        Ticket ticket = ticketDb.builder().description(ticketDto.getDescription()).notes(ticketDto.getNotes())
+                .assignee(ticketDto.getAssignee()).ticketDate(ticketDto.getTicketDate())
+                .priorityType(PriorityType.valueOf(ticketDto.getPriorityType()))
+                .ticketStatus(TicketStatus.valueOf(ticketDto.getTicketStatus()))
+                .build();
 
+        Ticket newTicket = ticketRepository.save(ticket);
 
-        return null;
+        ticketDto.setId(newTicket.getId());
+        return ticketDto;
     }
 
     @Override
     public TicketDTO getById(String ticketId) {
-        return null;
+        Optional<Ticket> ticketOptional = ticketRepository.findById(ticketId);
+        return modelMapper.map(ticketOptional.get(),TicketDTO.class);
     }
 
     @Override

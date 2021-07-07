@@ -1,6 +1,6 @@
 package com.company.api;
 
-import com.company.contract.AccountDTO;
+import com.company.client.contract.AccountDTO;
 import com.company.entity.Account;
 import com.company.service.AccountService;
 import lombok.RequiredArgsConstructor;

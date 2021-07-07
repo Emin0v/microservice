@@ -1,4 +1,4 @@
-package com.company.contract;
+package com.company.client.contract;
 
 import lombok.AllArgsConstructor;
 import lombok.Builder;

@@ -25,3 +25,15 @@ services:
     environment:
       ES_JAVA_OPTS: "-Xms512m -Xmx512m"
       discovery.type: single-node
+
+  msrabbitmq:
+    image: rabbitmq:3-management
+    container_name: hk-msrabbitmq
+#    networks:
+#      - company
+    ports:
+      - '5672:5672'
+      - '15672:15672'
+    environment:
+      - RABBITMQ_DEFAULT_USER=admin
+      - RABBITMQ_DEFAULT_PASS=admin

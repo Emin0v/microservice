@@ -16,16 +16,16 @@ spring:
       ddl-auto: update
 #    generate-ddl: true
 
-#  rabbitmq:
-#    username: ${MYSQL_USERNAME:rabbitmq}
-#    password: ${MYSQL_PASSWORD:rabbitmq}
-#  cloud:
-#    stream:
-#      bindings:
-#        output:
-#          destination: msqueue
-#  zipkin:
-#    base-url: ${ZIPKIN_SERVER_URL:http://localhost:9411/}
+  rabbitmq:
+    username: admin
+    password: admin
+  cloud:
+    stream:
+      bindings:
+        output:
+          destination: msqueue
+  zipkin:
+    base-url: ${ZIPKIN_SERVER_URL:http://localhost:9411/}
 
   boot:
     admin:

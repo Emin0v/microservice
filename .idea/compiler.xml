@@ -8,9 +8,11 @@
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
         <module name="config-server" />
+        <module name="zipkin-server" />
         <module name="account-service" />
         <module name="eureka-server" />
         <module name="service-common" />
+        <module name="notification-service" />
         <module name="ticket-service" />
       </profile>
     </annotationProcessing>
@@ -19,10 +21,12 @@
       <module name="config-server" target="11" />
       <module name="eureka-server" target="11" />
       <module name="microservice" target="11" />
+      <module name="notification-service" target="11" />
       <module name="resume.multimodule" target="11" />
       <module name="service-common" target="11" />
       <module name="service-parent" target="11" />
       <module name="ticket-service" target="11" />
+      <module name="zipkin-server" target="1.8" />
     </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
@@ -30,9 +34,11 @@
       <module name="account-service" options="-parameters" />
       <module name="config-server" options="-parameters" />
       <module name="eureka-server" options="-parameters" />
+      <module name="notification-service" options="-parameters" />
       <module name="service-common" options="-parameters" />
       <module name="service-parent" options="-parameters" />
       <module name="ticket-service" options="-parameters" />
+      <module name="zipkin-server" options="-parameters" />
     </option>
   </component>
 </project>
